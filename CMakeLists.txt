@@ -62,7 +62,7 @@ find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS
 find_package(epoxy REQUIRED)
 
 find_package(X11 REQUIRED)
-find_package(XCB REQUIRED COMPONENTS XCB)
+find_package(XCB REQUIRED COMPONENTS XCB RENDER SHAPE XFIXES COMPOSITE RANDR SHM RES SYNC)
 
 find_package(KWin REQUIRED COMPONENTS
     kwineffects
@@ -75,4 +75,3 @@ find_package(KWinDBusInterface CONFIG REQUIRED)
 add_subdirectory(src)
 
 feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
-

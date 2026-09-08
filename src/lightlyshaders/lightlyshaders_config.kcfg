@@ -6,7 +6,7 @@
     <kcfgfile name="lightlyshaders.conf"/>
     <group name="General">
         <entry name="Roundness" type="Int">
-            <default>5</default>
+            <default>8</default>
         </entry>
 
         <entry name="InnerOutline" type="Bool">

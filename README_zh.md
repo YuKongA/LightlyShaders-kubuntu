@@ -2,26 +2,38 @@
 
 # LightlyShaders v3.0
 
- 此效果与已有的 Plasma 特效一起正常工作。支持 KDE Plasma 版本 >= 6.7。
+此效果与已有的 Plasma 特效一起正常工作。本 Kubuntu 分支面向 KDE Plasma 6.6.x / KWin 6.6.x，已在 Kubuntu 26.04 上测试。
 
- ![default](screenshot.png)
+![default](screenshot.png)
 
-# 依赖关系：
+# 依赖关系
 
- Plasma版本>=6.7。 
+需要 KDE Plasma/KWin 6.6.x，以及 Qt 6、KF6、KWin、KDecoration3、X11 和 XCB 开发包。
 
- 您将需要qt6、kf6和kwin开发包。 
-
- **Arch** 下的依赖安装： 
- 
- `sudo pacman -S git make cmake gcc gettext extra-cmake-modules qt5-tools qt5-x11extras kcrash kglobalaccel kde-dev-utils kio knotifications kinit kwin`
- 
-# 手动安装 
+**Kubuntu 26.04 / Ubuntu 系统**：
 
 ```bash
-git clone https://github.com/walterfang12/LightlyShaders-Plasma6 && cd LightlyShaders-Plasma6
-mkdir qt6build && cd qt6build
-cmake ../ -DCMAKE_INSTALL_PREFIX=/usr && make && sudo make install
+sudo apt update
+sudo apt install \
+    build-essential cmake extra-cmake-modules gettext git \
+    qt6-base-dev qt6-base-private-dev qt6-tools-dev \
+    libkf6config-dev libkf6configwidgets-dev libkf6coreaddons-dev \
+    libkf6crash-dev libkf6globalaccel-dev libkf6guiaddons-dev \
+    libkf6i18n-dev libkf6kcmutils-dev libkf6kio-dev \
+    libkf6notifications-dev libkf6service-dev libkf6widgetsaddons-dev \
+    libkf6windowsystem-dev kwin-dev libkdecorations3-dev libepoxy-dev \
+    libx11-dev libxcb1-dev libxcb-render0-dev libxcb-shape0-dev \
+    libxcb-xfixes0-dev libxcb-composite0-dev libxcb-randr0-dev \
+    libxcb-shm0-dev libxcb-res0-dev libxcb-sync-dev
 ```
 
-**注： 在Plasma进行了一些更新后，可能需要重新编译此插件，以便处理引入KWin的更改。**
+# 手动安装
+
+```bash
+git clone https://github.com/YuKongA/LightlyShaders-kubuntu
+cd LightlyShaders-kubuntu; mkdir qt6build; cd qt6build
+cmake ../ -DCMAKE_INSTALL_PREFIX=/usr && make
+sudo make install
+```
+
+**注：** Plasma/KWin 更新后可能需要重新编译插件。如果 CMake 报告缺少 XCB 头文件，请先安装上面的完整依赖列表，再重新执行配置命令。
